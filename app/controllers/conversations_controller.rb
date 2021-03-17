@@ -1,8 +1,8 @@
 class ConversationsController < ApplicationController
 
   def index
-    user = User.first
-    @conversations = User.conversations(user)
+    @user = User.first
+    @conversations = User.conversations(@user)
   end
 
   def show

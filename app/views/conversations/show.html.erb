@@ -1,21 +1,28 @@
-<h1><%= "All Messages between #{@user1.name} and #{@user2.name}" %></h1>
 
-<ul>
-<% @messages.each do |message|%>
+<div class="jumbotron text-center">
+  <h2><%= "Convo: #{@user1.name} and #{@user2.name}" %></h2>
+</div>
+  <div class="container">
 
-<li>
-  <%= "#{message.sender.name} : #{message.body}"%>
-</li>
+    <div class="mb-3">
+    <%= form_with url: "/api/v1/users/#{@user1.id}/users/#{@user2.id}/messages", local: false, method: :post do |form| %>
+    <%= form.label :message, "Message" %>
+    <%= form.text_field :body %>
+    <%= form.submit "Send" %>
+    <% end %>
+    </div>
 
-<% end %>
-</ul>
+    <div class="card">
+      <ul class="list-group list-group-flush">
+      <% @messages.each do |message| %>
+        <li class="list-group-item">
+        <%= "#{message.sender.name} : #{message.body}" %>
+        </li>
+      <% end %>
+      </ul>
+  </div>
+
+</div>
 
 
 
-
-
-<%= form_with url: "/api/v1/users/#{@user1.id}/users/#{@user2.id}/messages", local: false, method: :post do |form| %>
-  <%= form.label :message, "Message" %>
-  <%= form.text_field :body %>
-  <%= form.submit "Send" %>
-<% end %>
