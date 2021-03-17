@@ -1,0 +1,21 @@
+<h1><%= "All Messages between #{@user1.name} and #{@user2.name}" %></h1>
+
+<ul>
+<% @messages.each do |message|%>
+
+<li>
+  <%= "#{message.sender.name} : #{message.body}"%>
+</li>
+
+<% end %>
+</ul>
+
+
+
+
+
+<%= form_with url: "/api/v1/users/#{@user1.id}/users/#{@user2.id}/messages", local: false, method: :post do |form| %>
+  <%= form.label :message, "Message" %>
+  <%= form.text_field :body %>
+  <%= form.submit "Send" %>
+<% end %>

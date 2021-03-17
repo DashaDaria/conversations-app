@@ -1,0 +1,14 @@
+<ul>
+<% @conversations.each do |user| %>
+
+<li>
+<%= link_to user.name, conversation_path(user_id: user.id)  %>
+</li>
+
+
+
+<% end %>
+</ul>
+
+
+

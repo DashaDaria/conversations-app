@@ -1,6 +1,6 @@
 
 FactoryBot.define do
     factory :user do
-        name { Faker::Name.unique.name }
+        name { Faker::Name.first_name}
     end
 end
