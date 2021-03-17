@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+ get "/api/v1/users/:user_id/conversations", to: "api/v1/users/conversations#index", format: :json
+
+ get "/api/v1/users/:user_one_id/users/:user_two_id/messages", to: "api/v1/users/users/messages#index", format: :json
+
+post "/api/v1/users/:user_one_id/users/:user_two_id/messages", to: "api/v1/users/users/messages#create", format: :json
+
+
 end
