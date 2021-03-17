@@ -1,5 +1,4 @@
 class ConversationsController < ApplicationController
-
   def index
     @user = User.first
     @conversations = User.conversations(@user)
@@ -9,7 +8,6 @@ class ConversationsController < ApplicationController
     @user1 = User.first
     @user2 = User.find(params[:user_id])
 
-    @messages = Message.conversation(@user1, @user2)
-
+    @messages = Message.conversation(@user1, @user2).order(created_at: :asc)
   end
 end
