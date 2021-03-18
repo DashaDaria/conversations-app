@@ -1,5 +1,15 @@
-// app/javascript/channels/chat_channel.js
 import consumer from "./consumer"
 
-consumer.subscriptions.create({ channel: "ConversationChannel", room: "Best Room" })
+consumer.subscriptions.create(
+  {
+    channel: "ConversationChannel",
+    topic:  "conversation_" + window.location.search.replace("?user_id=","")
+  },
+  {
+    received: function(data) {
+      console.log(data);
+    }
+  }
+)
+
 

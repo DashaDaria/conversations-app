@@ -1,34 +1,26 @@
-
 <div class="jumbotron text-center">
   <h2><%= "Convo: #{@user1.name} and #{@user2.name}" %></h2>
 </div>
-  <div class="container">
-
-    <div class="mb-3">
+<div class="container">
+  <div class="mb-3">
     <label for="message" class="form-label">Say anything</label>
     <%= form_with url: "/api/v1/users/#{@user1.id}/users/#{@user2.id}/messages", id: "new-message", local: false, method: :post do |form| %>
-    <%= form.text_field :body %>
-    <%= form.submit "Send" %>
+      <%= form.text_field :body %>
+      <%= form.submit "Send" %>
     <% end %>
-    </div>
-
-    <div class="card">
-      <ul class="list-group list-group-flush">
-      <% @messages.each do |message| %>
-        <li class="list-group-item">
-        <div>
-        <strong><%= "#{message.sender.name}" %> </strong>
-        <small>at <%= l message.created_at, format: :short %></small>
-        </div>
-
-        <%= "#{message.body}" %>
-
-        </li>
-      <% end %>
-      </ul>
   </div>
 
+  <div class="card">
+    <ul class="list-group list-group-flush">
+      <% @messages.each do |message| %>
+        <li class="list-group-item">
+          <div>
+            <strong><%= "#{message.sender.name}" %> </strong>
+            <small>at <%= l message.created_at, format: :short %></small>
+          </div>
+          <%= "#{message.body}" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
-
-
-
