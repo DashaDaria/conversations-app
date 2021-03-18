@@ -15,7 +15,7 @@ A simple messenger api that can enable a web app to build a lightweight messenge
 
 ## Getting Started
 
-Make sure you have Ruby and Rails installed.
+Make sure you have Ruby, Rails and Postgresql installed.
 
 ### Installation
 
