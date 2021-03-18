@@ -1,23 +1,21 @@
-puts "seeding the initial database"
-user1 = FactoryBot.create(:user, name: "Dasha")
+puts 'seeding the initial database'
+user1 = FactoryBot.create(:user, name: 'Dasha')
 
 user2 = FactoryBot.create(:user)
 user3 = FactoryBot.create(:user)
-user4 = FactoryBot.create(:user)
-user5 = FactoryBot.create(:user)
-user6 = FactoryBot.create(:user)
 
-message1 = FactoryBot.create(:message, sender: user1, recipient: user2)
-message2 = FactoryBot.create(:message, sender: user1, recipient: user3)
-message3 = FactoryBot.create(:message, sender: user1, recipient: user4)
-message4 = FactoryBot.create(:message, sender: user1, recipient: user5)
-message5 = FactoryBot.create(:message, sender: user1, recipient: user6)
-message6 = FactoryBot.create(:message, sender: user1, recipient: user2)
-message7 = FactoryBot.create(:message, sender: user1, recipient: user3)
-message8 = FactoryBot.create(:message, sender: user2, recipient: user4)
-message9 = FactoryBot.create(:message, sender: user2, recipient: user5)
-message10 = FactoryBot.create(:message, sender: user2, recipient: user6)
-message11 = FactoryBot.create(:message, sender: user3, recipient: user4)
-message12 = FactoryBot.create(:message, sender: user3, recipient: user5)
-message13 = FactoryBot.create(:message, sender: user3, recipient: user6)
-message14 = FactoryBot.create(:message, sender: user3, recipient: user1)
+50.times do
+  FactoryBot.create(:message, sender: user1, recipient: user2, created_at: rand(0..60).days.ago)
+end
+
+60.times do
+  FactoryBot.create(:message, sender: user2, recipient: user1, created_at: rand(0..60).days.ago)
+end
+
+20.times do
+  FactoryBot.create(:message, sender: user1, recipient: user3, created_at: rand(0..60).days.ago)
+end
+
+80.times do
+  FactoryBot.create(:message, sender: user3, recipient: user1, created_at: rand(0..60).days.ago)
+end

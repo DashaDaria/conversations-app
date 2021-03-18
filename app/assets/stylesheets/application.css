@@ -15,3 +15,7 @@
   *= require_self
   *= require font-awesome
  */
+
+.conversation-list {
+  width: 500px;
+}

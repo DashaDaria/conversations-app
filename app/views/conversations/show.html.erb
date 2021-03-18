@@ -1,22 +1,31 @@
 <div class="jumbotron text-center">
   <h2><%= "Convo: #{@user1.name} and #{@user2.name}" %></h2>
+  <a href="/" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">Back to conversations</a>
 </div>
 <div class="container">
-  <div class="mb-3">
-    <label for="message" class="form-label">Say anything</label>
-    <%= form_with url: "/api/v1/users/#{@user1.id}/users/#{@user2.id}/messages", id: "new-message", local: false, method: :post do |form| %>
-      <%= form.text_field :body %>
-      <%= form.submit "Send" %>
-    <% end %>
+  <form action=<%= "/api/v1/users/#{@user1.id}/users/#{@user2.id}/messages" %> data-remote="true" method="post">
+    <div class="mb-3">
+      <label for="message" class="form-label">Say anything</label>
+      <input type="text" class="form-control" id="message" name="body" >
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <div class="filters mt-5 mb-2">
+    <div class="d-flex">
+      <small class="mb-1"><%= link_to "Last 30 days", conversation_path(user_id: @user2.id, filter: "last30") %></small>
+      <small class="px-1"> | </small>
+      <small class="mb-1"><%= link_to "All Messages", conversation_path(user_id: @user2.id) %></small>
+    </div>
   </div>
 
   <div class="card">
-    <ul class="list-group list-group-flush">
+    <ul class="list-group list-group-flush" id="conversation-list">
       <% @messages.each do |message| %>
         <li class="list-group-item">
           <div>
             <strong><%= "#{message.sender.name}" %> </strong>
-            <small>at <%= l message.created_at, format: :short %></small>
+            <small><%= message.created_at.strftime("at %I:%M%p on %m/%d/%Y") %></small>
           </div>
           <%= "#{message.body}" %>
         </li>
