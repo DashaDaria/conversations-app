@@ -6,8 +6,8 @@ A simple messenger api that can enable a web app to build a lightweight messenge
 
 ### Built With
 
-- Ruby v3.0.0
-- Rails v6.1.3
+- Ruby 
+- Rails 
 - ActionCable for WebSockets integration
 - Rspec for testing
 - Postgresql for db
@@ -16,6 +16,10 @@ A simple messenger api that can enable a web app to build a lightweight messenge
 ## Getting Started
 
 Make sure you have Ruby, Rails and Postgresql installed.
+- Ruby v3.0.0
+- Rails v.6.1.3
+- Node v15.11.0
+- Yarn v1.17.3
 
 ### Installation
 
@@ -25,6 +29,7 @@ Simply clone the repo and install its dependencies:
 $ git clone git@github.com:DashaDaria/conversations-app.git
 $ cd conversations-app/
 $ bundle
+$ yarn install
 $ brew services start postgresql
 $ rails db:setup
 ```
