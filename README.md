@@ -25,6 +25,7 @@ Simply clone the repo and install its dependencies:
 $ git clone git@github.com:DashaDaria/conversations-app.git
 $ cd conversations-app/
 $ bundle
+$ brew services start postgresql
 $ rails db:setup
 ```
 
